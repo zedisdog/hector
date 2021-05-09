@@ -1,0 +1,29 @@
+{
+    "name": "cola/hector",
+    "description": "laravel api guard base jwt",
+    "type": "library",
+    "license" : "WTFPL",
+    "authors": [
+        {
+            "name": "zed",
+            "email": "zedsmail@163.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Cola\\Hector\\": "./src"
+        }
+    },
+    "require": {
+        "php": "^7.4|^8.0",
+        "firebase/php-jwt": "^5.2",
+        "laravel/framework": "^8.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cola\\Hector\\ServiceProvider"
+            ]
+        }
+    }
+}
