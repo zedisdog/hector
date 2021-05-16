@@ -36,12 +36,12 @@ class Guard
             $token = $request->query('token');
         }
         if (!$token) {
-            throw new UnauthorizedHttpException('invalid token');
+            throw;
         }
         try {
             $payload = (array)JWT::decode($token, $this->key, ['HS256']);
         } catch (ExpiredException | UnexpectedValueException $e) {
-            throw new UnauthorizedHttpException($e->getMessage());
+            throw;
         }
 
         /** @var Authenticatable|HasApiToken $user */
