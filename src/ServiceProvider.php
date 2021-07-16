@@ -23,6 +23,9 @@ class ServiceProvider extends BaseServiceProvider
                 'provider' => 'users',
             ],
         ]);
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/hector.php', 'hector'
+        );
     }
 
     public function boot()
