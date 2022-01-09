@@ -31,6 +31,9 @@ class Guard
 
     public function __invoke(Request $request, UserProvider $provider)
     {
+        if ($request->user()) {
+            return $request->user();
+        }
         $token = $request->bearerToken();
         if (!$token) {
             $token = $request->query('token');
