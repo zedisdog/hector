@@ -25,9 +25,9 @@ class Guard
      *
      * @param string $key
      */
-    public function __construct(string $key)
+    public function __construct(string $key, string $algorithm)
     {
-        $this->key = new Key($key, config('hector.algorithm'));
+        $this->key = new Key($key, $algorithm);
     }
 
     public function __invoke(Request $request, UserProvider $provider)

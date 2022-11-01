@@ -48,7 +48,7 @@ class ServiceProvider extends BaseServiceProvider
     private function createGuard(AuthManager $auth, array $config): RequestGuard
     {
         return new RequestGuard(
-            new Guard(config('hector.key')),
+            new Guard(config('hector.key'), config('hector.algorithm')),
             $this->app['request'],
             $auth->createUserProvider($config['provider']),
         );
