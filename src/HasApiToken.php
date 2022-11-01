@@ -29,7 +29,7 @@ trait HasApiToken
     {
         // todo: 过期时间
         $this->payloads = array_merge($this->payloads, ['jti' => $this->id]);
-        return JWT::encode($this->payloads, config('hector.key'));
+        return JWT::encode($this->payloads, config('hector.key'), config('hector.algorithm'));
     }
 
     public function getPayload(string $key = '', $default = null)
