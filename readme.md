@@ -1,6 +1,6 @@
 # hector
 
-laravel 的 api 认证中间件，基于jwt。因为 sanctum 太简单，passport 又太复杂。
+laravel 的 api 认证中间件，基于jwt。
 
 ## 安装
 

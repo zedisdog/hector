@@ -9,6 +9,7 @@ namespace Cola\Hector;
 
 use Firebase\JWT\ExpiredException;
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ use UnexpectedValueException;
 
 class Guard
 {
-    protected string $key;
+    protected Key $key;
 
     /**
      * Create a new authentication guard.
@@ -26,7 +27,7 @@ class Guard
      */
     public function __construct(string $key)
     {
-        $this->key = $key;
+        $this->key = new Key($key, config('hector.algorithm'));
     }
 
     public function __invoke(Request $request, UserProvider $provider)
@@ -42,7 +43,7 @@ class Guard
             throw new UnauthorizedHttpException('无效的token');
         }
         try {
-            $payload = (array)JWT::decode($token, $this->key, ['HS256']);
+            $payload = (array)JWT::decode($token, $this->key);
         } catch (ExpiredException | UnexpectedValueException $e) {
             throw new UnauthorizedHttpException('无效的token');
         }

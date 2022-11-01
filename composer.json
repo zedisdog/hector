@@ -16,8 +16,8 @@
     },
     "require": {
         "php": "^7.4|^8.0",
-        "firebase/php-jwt": "^5.2",
-        "laravel/framework": "^8.0"
+        "firebase/php-jwt": "^6.0",
+        "laravel/framework": "^8.0|^9.0"
     },
     "extra": {
         "laravel": {
