@@ -49,7 +49,7 @@ class Guard
         }
 
         /** @var Authenticatable|HasApiToken $user */
-        $user = $provider->retrieveById($payload['jti']);
+        $user = $provider->retrieveById($payload['sub']);
         if (!$user) {
             return null;
         }
