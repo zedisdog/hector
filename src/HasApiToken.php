@@ -19,9 +19,25 @@ trait HasApiToken
 {
     public array $payloads = [];
 
+    /**
+     * Set custom fields into token
+     * @param $payloads
+     * @return HasApiToken
+     */
+    public function setPayloads($payloads): self {
+        $this->payloads = $payloads;
+        return $this;
+    }
+
+    /**
+     * Set custom fields into token.
+     * Different from setPayloads, this method will merge payloads.
+     * @param $payloads
+     * @return HasApiToken
+     */
     public function withPayloads($payloads): self
     {
-        $this->payloads = $payloads;
+        $this->payloads = array_merge($this->payloads, $payloads);
         return $this;
     }
 
